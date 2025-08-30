@@ -1,13 +1,29 @@
 import random
 class BirthdayParadox:
     def __init__(self, num_people, num_trials=1000):
-        if num_people < 0:
-            raise ValueError("group_size must be non-negative")
-        if num_trials <= 0:
-            raise ValueError("simulation must be positive")
-        
         self.num_people = num_people
         self.num_trials = num_trials
+
+    @property
+    def num_people(self):
+        return self._num_people
+    
+    @num_people.setter
+    def num_people(self, value):
+        if value < 0:
+            raise ValueError("num_people must be positive integer")
+        self._num_people = value
+    
+    @property
+    def num_trials(self):
+        return self._num_trials
+    
+    @num_trials.setter
+    def num_trials(self, value):
+        if value <= 0:
+            raise ValueError("num_trials must be positive integer")
+        self._num_trials = value
+        
 
     def generate_birthdays(self):
         birthdays = []
@@ -39,3 +55,4 @@ class BirthdayParadox:
         
 
         
+
